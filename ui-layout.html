@@ -1,0 +1,164 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+A responsive ui element that creates an app-like structure containing a drawer. The `ui-layout`
+element wraps two other elements, a `main` and  a `drawer` construct. Each defining where
+content will be layed out when rendering.
+
+
+##Responsive Breakpoints
+`ui-layout` is currently built using the following breakpoints.
+
+<pre>
+    <code>
+         0        480px         720px        944px        1264px    1920px
+         ├─────────┼─────────────┼─────────────┼───────────┼─────────┼─────────>
+         ·  phone  ·   phablet   ·   tablet    ·  desktop  ·   hd    ·
+    </code>
+</pre>
+
+
+## Using the element
+When defining the main container use the attribute `main` to indicate the element's construct.
+
+Example:
+
+    <ui-layout>
+        <div main>
+            ....
+        </div>
+    </ui-layout>
+
+When defining the drawer use the attribute `drawer` to indicate the element's construct.
+By default the drawer will be positioned to the left and given a type of slide.
+
+Example:
+
+    <ui-layout>
+        <div drawer>
+            ....
+        </div>
+    </ui-layout>
+
+You can indicate a attribute of `left` or `right` to define a drawer's position.
+Omission of these position attributes will default the drawer to be positioned on the left.
+
+Example:
+
+    <ui-layout>
+        <div drawer right>
+            ....
+        </div>
+        <div main>
+            ....
+        </div>
+    </ui-layout>
+
+You can indicate a attribute of `pan`, `slide` or `parallax` to define a drawer's type.
+Omission of these type attributes will default the drawer to use the 'slide' type.
+
+Example:
+
+    <ui-layout>
+        <div drawer pan>
+            ....
+        </div>
+        <div main>
+            ....
+        </div>
+    </ui-layout>
+
+A layout defining a drawer that is positioned to the right with a type of parallax.
+
+Example:
+
+    <ui-layout>
+        <div drawer right parallax>
+            ....
+        </div>
+        <div main>
+            ....
+        </div>
+    </ui-layout>
+
+@element ui-layout
+@blurb Web component which allows for easy app drawer creation
+@status alpha
+@homepage https://github.com/filaraujo/ui-layout/
+-->
+
+<polymer-element name="ui-layout">
+    <template>
+        <link rel="stylesheet" href="ui-layout.css" />
+
+        <div id="drawer" open?="{{isOpen}}">
+            <content select="[drawer]" id="drawerContent"></content>
+        </div>
+
+        <div id="main">
+            <content select="[main]"></content>
+        </div>
+
+    </template>
+    <script>
+        (function(){
+            var drawerTypes = ['slide','parallax', 'pan'];
+
+            Polymer('ui-layout', {
+
+               /**
+                * The `author` attribute sets an initial author
+                *
+                * @attribute author
+                * @type string
+                * @default 'Filipe Araujo'
+                */
+                author: 'Filipe Araujo',
+
+                /**
+                * `isOpen` indicates whether a drawer is open.
+                * This api may also be used to open and close the drawer
+                *
+                * @property isOpen
+                * @type bool
+                * @default false
+                */
+                isOpen: false,
+
+                /**
+                * lifecycle event
+                */
+                attached: function(){
+                    var node = this.$.drawerContent.getDistributedNodes()[0],
+
+                        // filter out which type of drawer is declared
+                        types;
+
+                    types = drawerTypes.filter(function(type){
+                        console.log(node)
+                        return node && node.hasAttribute(type);
+                    });
+
+                    if(this.$.drawer){
+                        return false;
+                    }
+
+                    // set which side drawer is on
+                    this.$.drawer.setAttribute(node.hasAttribute('right') ? 'right' : 'left', '');
+
+                    // set which type of drawer to use
+                    this.$.drawer.setAttribute(types[0] || 'slide','');
+                },
+
+                /**
+                * The `toggleDrawer` method will open and close the drawer
+                *
+                * @method toggleDrawer
+                */
+                toggleDrawer: function(){
+                    this.isOpen = !this.isOpen;
+                }
+            });
+        }());
+    </script>
+</polymer-element>

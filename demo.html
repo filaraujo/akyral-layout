@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+
+    <head>
+        <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+        <link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+        <title>ui-layout Demo</title>
+
+        <script src="../platform/platform.js"></script>
+        <link rel="import" href="ui-layout.html">
+
+        <style media="screen">
+            body {
+                background: #E91E63;
+                color: #333;
+                font-family: Lato;
+                font-size: 14px;
+                line-height: 24px;
+            }
+
+            div[main] {
+                padding-top: 40px;
+                position: relative;
+                padding: 70px 20px 20px;
+            }
+
+            div[drawer] {
+                padding: 70px 20px 20px 30px;
+            }
+            button {
+                background: #E91E63;
+                border: 0;
+                color: #fff;
+                display: block;
+                font-weight: 300;
+                position: absolute;
+                top: 20px;
+                height: 50px;
+                width: 50px;
+            }
+            [drawer][right] + [main] button {
+                right: 20px;
+            }
+            [drawer][left] + [main] button {
+                left: 20px;
+            }
+
+            @media (min-width: 944px){
+                button {
+                    display: none;
+                }
+            }
+
+            h1,
+            h2 {
+                text-transform: uppercase;
+                font-weight: 300;
+            }
+
+            ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+            li {
+                color: #eee;
+                font-size: 18px;
+                font-weight: 300;
+                line-height: 30px;
+            }
+        </style>
+
+    </head>
+
+    <body unresolved>
+
+        <ui-layout>
+            <div drawer pan left>
+                <h1>Navigation</h1>
+                <ul>
+                    <li>List Item 1</li>
+                    <li>List Item 2</li>
+                    <li>List Item 3</li>
+                    <li>List Item 4</li>
+                </ul>
+                <h2>Sub Navigation</h2>
+
+                <ul>
+                    <li>List Item 1</li>
+                    <li>List Item 2</li>
+                    <li>List Item 3</li>
+                    <li>List Item 4</li>
+                </ul>
+            </div>
+            <div main>
+                <h1>Heading</h1>
+                <p>
+                    Aliquip ipsum laborum nulla occaecat ad fugiat voluptate fugiat culpa laboris fugiat voluptate nulla aliquip. Nulla exercitation proident deserunt dolore adipisicing veniam. Cillum quis consequat incididunt officia elit. Nulla officia magna occaecat esse cupidatat reprehenderit dolore. Nisi duis nostrud commodo occaecat duis ullamco duis Lorem dolore in exercitation laborum.
+    Labore fugiat ullamco nostrud aliquip do labore quis velit veniam. Incididunt mollit ea velit ea sit adipisicing in ea magna duis veniam. Occaecat quis veniam dolor aliqua et do elit. Reprehenderit Lorem pariatur aliqua proident ut minim pariatur veniam do excepteur. Incididunt ipsum excepteur qui laboris sit.
+    Velit deserunt mollit aliqua voluptate esse mollit do proident elit.
+                </p>
+                <p>
+                    Quis non cupidatat occaecat ullamco nisi ullamco. Nostrud non elit nisi amet velit consectetur officia. Voluptate mollit veniam incididunt incididunt Lorem mollit. Dolor ea magna id laboris ex incididunt qui ut. Cupidatat dolore cupidatat nostrud nostrud cillum adipisicing esse labore non veniam nisi in. In enim aute pariatur excepteur irure duis reprehenderit excepteur et pariatur ex sunt anim. Mollit in irure nisi dolor ea.
+    Reprehenderit nulla irure nulla quis laboris aute. Est aliquip aliqua est irure fugiat consequat ad ex esse. Aliquip non sit laborum voluptate cillum proident. Est culpa nulla laboris veniam irure eu. Esse Lorem aliquip consequat nulla proident veniam ipsum nulla. Dolor in occaecat excepteur esse nulla ullamco ipsum fugiat cupidatat fugiat eu. Elit adipisicing ad pariatur exercitation eiusmod nisi elit eu.
+    Sit amet reprehenderit qui ea eu laboris laboris adipisicing. Quis dolore voluptate ullamco sit incididunt laborum.
+                </p>
+                <p>
+                    Ea ex nisi incididunt mollit mollit ex. Sunt anim consequat fugiat sit nulla esse esse laboris sint cillum esse duis in tempor.
+                </p>
+
+                <button name="button" onclick="document.querySelector('ui-layout').toggleDrawer();">menu</button>
+            </div>
+        </ui-layout>
+
+    </body>
+
+</html>
