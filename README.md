@@ -14,4 +14,4 @@ You can find documentation [here!](http://filaraujo.github.io/ui-layout/componen
 
 
 ##Demo
-Check out the demo [here!](http://filaraujo.github.io/ui-layout/components/ui-layout/ui-layout/demo.html)
+Check out the demo [here!](http://filaraujo.github.io/ui-layout/components/ui-layout/demo.html)

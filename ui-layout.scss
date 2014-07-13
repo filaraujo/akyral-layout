@@ -15,6 +15,8 @@ $drawer-shadow: 0 0 20px rgba(0,0,0,.3);
     overflow-x: hidden;
 }
 
+
+
 #main {
     background: #fff;
     bottom: 0;
@@ -26,6 +28,10 @@ $drawer-shadow: 0 0 20px rgba(0,0,0,.3);
     overflow: scroll;
 }
 
+#drawer {
+    overflow: auto;
+}
+
 @include from(phablet){
     #drawer {
         width: $drawer-min-width;
@@ -33,6 +39,16 @@ $drawer-shadow: 0 0 20px rgba(0,0,0,.3);
 }
 
 @include to(tablet){
+    // make the [drawer] fill full content
+    polyfill-next-selector { content: ':host [drawer]'; }
+    ::content [drawer] {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+
     #drawer {
         bottom: 0;
         box-sizing: border-box;
@@ -102,6 +118,11 @@ $drawer-shadow: 0 0 20px rgba(0,0,0,.3);
 
         // parallax
         &[parallax] {
+
+            + #main {
+                box-shadow: $drawer-shadow;
+            }
+
             &[left]{
                 transform: translate3d(-40%,0,0); // less to animate, makes it looks like parallax
 
@@ -128,7 +149,6 @@ $drawer-shadow: 0 0 20px rgba(0,0,0,.3);
         }
 
         + #main {
-            box-shadow: $drawer-shadow;
             transition: $drawer-transition-fx;
             transform: translate3d(0, 0, 0);
         }
@@ -174,8 +194,9 @@ $drawer-shadow: 0 0 20px rgba(0,0,0,.3);
                 transform: translate3d(-$drawer-peek-width, 0, 0) translate3d(100%, 0, 0);
             }
             &[pan] {
-                padding-right: $drawer-peek-width; // add padding to create the peek size
-                left: -100%; // makes the element 100% when coupled with right: 100%
+                // makes the element 100% when coupled with right: 100%, then subtract the size of peek
+                left: calc(-100% + #{$drawer-peek-width});
+
 
                 &[open]{
                     transform: translate3d(100%, 0, 0); // move drawer left width of drawer
@@ -195,9 +216,10 @@ $drawer-shadow: 0 0 20px rgba(0,0,0,.3);
                 // main elements moves right the peeks size first, then left the width of drawer
                 transform: translate3d($drawer-peek-width, 0, 0) translate3d(-100%, 0, 0);
             }
+
             &[pan] {
-                padding-left: $drawer-peek-width; // add padding to create the peek size
-                right: -100%; // makes the element 100% when coupled with left: 100%
+                // makes the element 100% when coupled with left: 100%, then subtract the size of peek
+                right: calc(-100% + #{$drawer-peek-width});
 
                 &[open] {
                     transform: translate3d(-100%, 0, 0); // move drawer left width of drawer
