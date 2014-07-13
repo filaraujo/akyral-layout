@@ -5,16 +5,29 @@
     "Filipe Araujo <filipe.alves.araujo@gmail.com>"
   ],
   "description": "A responsive ui element that creates an app-like structure containing a drawer.",
-  "keywords": "ui, layout, drawer,  polymer, web-components",
+  "keywords": [
+    "ui",
+    "layout",
+    "drawer",
+    "polymer",
+    "web-components"
+  ],
   "main": "ui-layout.html",
   "license": "MIT",
   "homepage": "https://github.com/filaraujo/ui-layout/",
   "ignore": [
     "**/.*",
-    "**/*.scss"
+    "**/*.scss",
+    "**/*.gif",
+    "node_modules",
+    "bower_components",
+    "../",
+    "test",
+    "tests",
+    "demo.html"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#~0.3.3",
+    "polymer": "~0.3.3",
     "polymer-test-tools": "Polymer/polymer-test-tools#~0.3.3"
   }
 }
