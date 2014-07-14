@@ -45,6 +45,7 @@ $drawer-shadow: 0 0 20px rgba(0,0,0,.3);
       bottom: 0;
       left: 0;
       right: 0;
+      overflow: auto;
     }
 
     #drawer {
@@ -170,6 +171,7 @@ $drawer-shadow: 0 0 20px rgba(0,0,0,.3);
     #drawer {
         flex-grow: 0;
         flex-shrink: 0;
+        position: relative;
         width: $drawer-min-width;
 
         &[left]{
