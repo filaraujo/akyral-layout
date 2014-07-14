@@ -1,6 +1,6 @@
 {
   "name": "ui-layout",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "authors": [
     "Filipe Araujo <filipe.alves.araujo@gmail.com>"
   ],
@@ -18,16 +18,14 @@
   "ignore": [
     "**/.*",
     "**/*.scss",
-    "**/*.gif",
     "node_modules",
     "bower_components",
     "../",
     "test",
-    "tests",
-    "demo.html"
+    "tests"
   ],
   "dependencies": {
-    "polymer": "~0.3.3",
+    "polymer": "Polymer/polymer#~0.3.3",
     "polymer-test-tools": "Polymer/polymer-test-tools#~0.3.3"
   }
 }
