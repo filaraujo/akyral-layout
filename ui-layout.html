@@ -92,11 +92,12 @@ Example:
     <template>
         <link rel="stylesheet" href="ui-layout.css" />
 
-        <div id="drawer" open?="{{isOpen}}">
+        <div id="drawer" open?="{{isDrawerOpen}}">
             <content select="[drawer]" id="drawerContent"></content>
         </div>
 
         <div id="main">
+            <div id="overlay" on-tap="{{closeDrawer}}"></div>
             <content select="[main]"></content>
         </div>
 
@@ -117,14 +118,13 @@ Example:
                 author: 'Filipe Araujo',
 
                 /**
-                * `isOpen` indicates whether a drawer is open.
-                * This api may also be used to open and close the drawer
+                * `isDrawerOpen` indicates whether a drawer is open.
                 *
-                * @property isOpen
+                * @property isDrawerOpen
                 * @type bool
                 * @default false
                 */
-                isOpen: false,
+                isDrawerOpen: false,
 
                 /**
                 * lifecycle event
@@ -151,12 +151,30 @@ Example:
                 },
 
                 /**
+                * The `closeDrawer` method will close the drawer
+                *
+                * @method closeDrawer
+                */
+                closeDrawer: function(){
+                    this.isDrawerOpen = false;
+                },
+
+                /**
+                * The `openDrawer` method will open the drawer
+                *
+                * @method openDrawer
+                */
+                openDrawer: function(){
+                    this.isDrawerOpen = false;
+                },
+
+                /**
                 * The `toggleDrawer` method will open and close the drawer
                 *
                 * @method toggleDrawer
                 */
                 toggleDrawer: function(){
-                    this.isOpen = !this.isOpen;
+                    this.isDrawerOpen = !this.isDrawerOpen;
                 }
             });
         }());
