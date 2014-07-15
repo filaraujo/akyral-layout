@@ -54,7 +54,7 @@ Example:
         </div>
     </ui-layout>
 
-You can indicate a attribute of `pan`, `slide` or `parallax` to define a drawer's type.
+You can indicate a attribute of `pan`, `parallax`, `reveal` or `slide` to define a drawer's type.
 Omission of these type attributes will default the drawer to use the 'slide' type.
 
 Example:
@@ -84,7 +84,7 @@ Example:
 @element ui-layout
 @blurb Web component which allows for easy app drawer creation
 @status alpha
-@homepage https://github.com/filaraujo/ui-layout/
+@homepage http://filaraujo.github.io/ui-layout
 @demo http://filaraujo.github.io/ui-layout/components/ui-layout/demo
 -->
 
@@ -103,7 +103,7 @@ Example:
     </template>
     <script>
         (function(){
-            var drawerTypes = ['slide','parallax', 'pan'];
+            var drawerTypes = ['parallax', 'pan', 'reveal', 'slide'];
 
             Polymer('ui-layout', {
 

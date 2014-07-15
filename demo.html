@@ -32,6 +32,7 @@
                 background: #E91E63;
                 border: 0;
                 color: #fff;
+                cursor: pointer;
                 display: block;
                 font-weight: 300;
                 position: absolute;
@@ -39,15 +40,17 @@
                 height: 50px;
                 width: 50px;
             }
+
             [drawer] button {
-                background: transparent;
+                background: #000;
                 border: 0;
+                padding: 9px;
                 position: absolute;
-                top: 0;
-                right: 0;
+                top: 20px;
+                right: 20px;
                 color: #fff;
                 cursor: pointer;
-                font-size: 18px;
+                font-size: 10px;
             }
             [drawer][right] + [main] button {
                 right: 20px;
@@ -56,10 +59,8 @@
                 left: 20px;
             }
 
-            @media (min-width: 944px){
-                button {
-                    display: none;
-                }
+            [drawer][right] + [main] h1 {
+                left: 20px;
             }
 
             h1,
@@ -67,6 +68,25 @@
             h3 {
                 text-transform: uppercase;
                 font-weight: 300;
+            }
+
+            h1 {
+                font-weight: 400;
+                margin: 0;
+                position: absolute;
+                top: 26px;
+                left: 86px;
+            }
+
+            h1 span {
+                font-size: 11px;
+                text-transform: normal;
+                font-weight: 400;
+                display: none;
+            }
+
+            h2 span {
+                font-size: 14px;
             }
 
             ul {
@@ -80,7 +100,8 @@
                 font-weight: 300;
                 line-height: 30px;
             }
-            a {
+            a[data-position],
+            a[data-type] {
                 display: inline-block;
                 border: 1px solid #000;
                 text-decoration: none;
@@ -93,15 +114,18 @@
                 transition: opacity .3s;
                 margin: 5px;
             }
-            a.active {
+            a[data-position].active,
+            a[data-type].active {
                 outline: 1px solid #000;
                 opacity: 1;
             }
-            a:hover {
+            a[data-position]:hover,
+            a[data-type]:hover {
                 opacity: .8;
             }
 
-            a:after {
+            a[data-position]:after,
+            a[data-type]:after {
                 color: #fff;
                 font-size: 14px;
                 position: absolute;
@@ -118,6 +142,9 @@
             a[data-type="parallax"]{
                 background-position: 0 -375px;
             }
+            a[data-type="reveal"]{
+                background-position: 0 -625px;
+            }
             a[data-type="slide"]{
                 background-position: 0 -500px;
             }
@@ -132,6 +159,49 @@
                 content: attr(data-position);
             }
 
+            @media (max-width: 480px){
+                div[main]{
+                    padding-top: 50px;
+                }
+                div[main] button {
+                    top: 0;
+                }
+
+                h1 {
+                    left: 66px;
+                    top: 16px;
+                }
+
+
+                [drawer][right] + [main] button {
+                    right: 0;
+                }
+
+                [drawer][left] + [main] button {
+                    left: 0;
+                }
+
+                [drawer] button {
+                    top: 10px;
+                }
+            }
+
+            @media (min-width: 481px) and (max-width: 940px){
+                h1 {
+                    top: 36px;
+                }
+
+            }
+
+            @media (min-width: 944px){
+
+                h1 span {
+                    display: block;
+                }
+                button {
+                    display: none;
+                }
+            }
 
         </style>
 
@@ -141,7 +211,8 @@
 
         <ui-layout>
             <div drawer pan left>
-                <h1>[Drawer]</h1>
+                <h2>[Drawer] <span>element</span></h2>
+                <button name="x" onclick="document.querySelector('ui-layout').isOpen = false;">close</button>
                 <p>
                     Sint exercitation amet nisi in duis amet reprehenderit excepteur reprehenderit amet ad. Nostrud minim sint enim nulla eu esse nisi elit dolor fugiat. Est reprehenderit eu cupidatat nulla nostrud qui tempor dolor id velit sint fugiat. Non ea laboris irure aliquip magna nulla. Elit proident aliquip ullamco enim sunt eiusmod sit aute. Sunt cillum eu velit ea laboris commodo incididunt. Cillum consectetur velit incididunt nisi ipsum anim id ut cupidatat anim nisi ullamco qui. Excepteur minim incididunt anim sunt reprehenderit consectetur sint adipisicing non adipisicing occaecat ea esse magna. Minim eu laborum mollit est nostrud voluptate.
                 </p>
@@ -151,11 +222,12 @@
                 <p>
                     Reprehenderit enim labore tempor id cillum elit commodo. Id fugiat minim laborum officia esse ad ea voluptate fugiat anim veniam incididunt dolore. Quis aliqua amet velit veniam deserunt ullamco adipisicing laborum in. Mollit ut Lorem laborum eiusmod sint id aliqua sunt est ullamco. Tempor mollit cillum non sint deserunt. Deserunt tempor aliquip est in id reprehenderit qui incididunt cupidatat. Labore consequat incididunt sit in est adipisicing velit Lorem quis do consequat adipisicing laborum sint.
                 </p>
-
-                <button name="button" onclick="document.querySelector('ui-layout').isOpen = false;">x</button>
             </div>
             <div main>
-                <h1>UI-Layout</h1>
+                <h1>
+                    UI-Layout
+                    <span>Resize browser down!</span>
+                </h1>
 
                 <h3>Drawer Position</h3>
                 <a href="#" data-position="left">left</a>
@@ -164,9 +236,12 @@
                 <h3>Drawer Type</h3>
                 <a href="#" data-type="pan">pan</a>
                 <a href="#" data-type="parallax">parallax</a>
+                <a href="#" data-type="reveal">reveal</a>
                 <a href="#" data-type="slide">slide</a>
 
-                <h3>Lorem ipsum</h3>
+                <button name="menu" onclick="document.querySelector('ui-layout').toggleDrawer();">open</button>
+
+                <h2>[Main] <span>element</span></h2>
                 <p>
                     Aliquip ipsum laborum nulla occaecat ad fugiat voluptate fugiat culpa laboris fugiat voluptate nulla aliquip. Nulla exercitation proident deserunt dolore adipisicing veniam. Cillum quis consequat incididunt officia elit. Nulla officia magna occaecat esse cupidatat reprehenderit dolore. Nisi duis nostrud commodo occaecat duis ullamco duis Lorem dolore in exercitation laborum.
     Labore fugiat ullamco nostrud aliquip do labore quis velit veniam. Incididunt mollit ea velit ea sit adipisicing in ea magna duis veniam. Occaecat quis veniam dolor aliqua et do elit. Reprehenderit Lorem pariatur aliqua proident ut minim pariatur veniam do excepteur. Incididunt ipsum excepteur qui laboris sit.
@@ -181,7 +256,7 @@
                     Ea ex nisi incididunt mollit mollit ex. Sunt anim consequat fugiat sit nulla esse esse laboris sint cillum esse duis in tempor.
                 </p>
 
-                <button name="button" onclick="document.querySelector('ui-layout').toggleDrawer();">menu</button>
+
 
             </div>
         </ui-layout>
