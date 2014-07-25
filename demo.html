@@ -212,7 +212,7 @@
         <ui-layout>
             <div drawer pan left>
                 <h2>[Drawer] <span>element</span></h2>
-                <button name="x" onclick="document.querySelector('ui-layout').closeDrawer();">close</button>
+                <button name="close">close</button>
                 <p>
                     Sint exercitation amet nisi in duis amet reprehenderit excepteur reprehenderit amet ad. Nostrud minim sint enim nulla eu esse nisi elit dolor fugiat. Est reprehenderit eu cupidatat nulla nostrud qui tempor dolor id velit sint fugiat. Non ea laboris irure aliquip magna nulla. Elit proident aliquip ullamco enim sunt eiusmod sit aute. Sunt cillum eu velit ea laboris commodo incididunt. Cillum consectetur velit incididunt nisi ipsum anim id ut cupidatat anim nisi ullamco qui. Excepteur minim incididunt anim sunt reprehenderit consectetur sint adipisicing non adipisicing occaecat ea esse magna. Minim eu laborum mollit est nostrud voluptate.
                 </p>
@@ -239,7 +239,7 @@
                 <a href="#" data-type="reveal">reveal</a>
                 <a href="#" data-type="slide">slide</a>
 
-                <button name="menu" onclick="document.querySelector('ui-layout').toggleDrawer();">open</button>
+                <button name="open">open</button>
 
                 <h2>[Main] <span>element</span></h2>
                 <p>
@@ -270,6 +270,16 @@
                     currentType = 'pan',
                     currentPosition = 'left';
 
+                document.querySelector('button[name="open"]').addEventListener('click', function(){
+                    document.querySelector('ui-layout').toggleDrawer();
+                    ga('send', 'event', 'ui-layout', 'open drawer', 'open', 1);
+                });
+
+                document.querySelector('button[name="close"]').addEventListener('click', function(){
+                    document.querySelector('ui-layout').closeDrawer();
+                    ga('send', 'event', 'ui-layout', 'close drawer', 'close', 1);
+                });
+
                 function bindEvents(){
                     var anchors = document.querySelectorAll('a');
                     [].forEach.call(anchors, function(anchor){
@@ -285,6 +295,7 @@
                         drawer = document.createElement('div'),
                         main = document.createElement('div'),
                         newUi = new UiLayout();
+
 
                     drawer.setAttribute('drawer', '');
                     drawer.innerHTML = drawerInner;
@@ -307,6 +318,11 @@
                     drawer.setAttribute(currentPosition,'');
                     drawer.setAttribute(currentType,'');
 
+
+
+
+                    ga('send', 'event', 'ui-layout', 'set type and position', currentPosition+' '+currentType);
+
                     document.body.removeChild(ui);
                     document.body.appendChild(newUi);
 
@@ -317,6 +333,16 @@
 
                 bindEvents();
             }());
+        </script>
+
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-46802115-1', 'auto');
+            ga('send', 'pageview');
         </script>
 
 
