@@ -5,15 +5,7 @@ $drawer-transition-fx: transform .4s cubic-bezier(0.0, 0.0, 0.2, 1);
 $drawer-peek-width: 52px;
 $drawer-shadow: 0 0 20px rgba(0,0,0,.3);
 
-:host {
-    bottom: 0;
-    display: block;
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-    overflow-x: hidden;
-}
+
 
 #main {
     bottom: 0;
@@ -53,6 +45,16 @@ polyfill-next-selector { content: ':host [main]'; }
 }
 
 @include to(tablet){
+    :host {
+        bottom: 0;
+        display: block;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        overflow-x: hidden;
+    }
+
     // make the [drawer] fill full content
     polyfill-next-selector { content: ':host [drawer]'; }
     ::content [drawer] {
@@ -63,6 +65,7 @@ polyfill-next-selector { content: ':host [main]'; }
       right: 0;
       overflow: auto;
     }
+
     polyfill-next-selector { content: ':host [main]'; }
     ::content [main] {
       position: absolute;

@@ -16,6 +16,7 @@
                 font-family: Lato;
                 font-size: 14px;
                 line-height: 24px;
+                margin: 0;
             }
 
             div[main] {
@@ -270,20 +271,20 @@
                     currentType = 'pan',
                     currentPosition = 'left';
 
-                document.querySelector('button[name="open"]').addEventListener('click', function(){
-                    document.querySelector('ui-layout').toggleDrawer();
-                    ga('send', 'event', 'ui-layout', 'open drawer', 'open', 1);
-                });
-
-                document.querySelector('button[name="close"]').addEventListener('click', function(){
-                    document.querySelector('ui-layout').closeDrawer();
-                    ga('send', 'event', 'ui-layout', 'close drawer', 'close', 1);
-                });
-
                 function bindEvents(){
                     var anchors = document.querySelectorAll('a');
                     [].forEach.call(anchors, function(anchor){
                         anchor.addEventListener('click', createNewUi)
+                    });
+
+                    document.querySelector('button[name="open"]').addEventListener('click', function(){
+                        document.querySelector('ui-layout').toggleDrawer();
+                        ga('send', 'event', 'ui-layout', 'open drawer', 'open', 1);
+                    });
+
+                    document.querySelector('button[name="close"]').addEventListener('click', function(){
+                        document.querySelector('ui-layout').closeDrawer();
+                        ga('send', 'event', 'ui-layout', 'close drawer', 'close', 1);
                     });
 
                     document.querySelector('a[data-type="'+currentType+'"]').classList.add('active');
