@@ -1,13 +1,13 @@
 <link rel="import" href="../polymer/polymer.html">
 
 <!--
-A responsive ui element that creates an app-like structure containing a drawer. The `ui-layout`
+A responsive ui element that creates an app-like structure containing a drawer. The `akyral-layout`
 element wraps two other elements, a `main` and  a `drawer` construct. Each defining where
 content will be layed out when rendering.
 
 
 ##Responsive Breakpoints
-`ui-layout` is currently built using the following breakpoints.
+`akyral-layout` is currently built using the following breakpoints.
 
 <pre>
     <code>
@@ -23,74 +23,74 @@ When defining the main container use the attribute `main` to indicate the elemen
 
 Example:
 
-    <ui-layout>
+    <akyral-layout>
         <div main>
             ....
         </div>
-    </ui-layout>
+    </akyral-layout>
 
 When defining the drawer use the attribute `drawer` to indicate the element's construct.
 By default the drawer will be positioned to the left and given a type of slide.
 
 Example:
 
-    <ui-layout>
+    <akyral-layout>
         <div drawer>
             ....
         </div>
-    </ui-layout>
+    </akyral-layout>
 
 You can indicate a attribute of `left` or `right` to define a drawer's position.
 Omission of these position attributes will default the drawer to be positioned on the left.
 
 Example:
 
-    <ui-layout>
+    <akyral-layout>
         <div drawer right>
             ....
         </div>
         <div main>
             ....
         </div>
-    </ui-layout>
+    </akyral-layout>
 
 You can indicate a attribute of `pan`, `parallax`, `reveal` or `slide` to define a drawer's type.
 Omission of these type attributes will default the drawer to use the 'slide' type.
 
 Example:
 
-    <ui-layout>
+    <akyral-layout>
         <div drawer pan>
             ....
         </div>
         <div main>
             ....
         </div>
-    </ui-layout>
+    </akyral-layout>
 
 A layout defining a drawer that is positioned to the right with a type of parallax.
 
 Example:
 
-    <ui-layout>
+    <akyral-layout>
         <div drawer right parallax>
             ....
         </div>
         <div main>
             ....
         </div>
-    </ui-layout>
+    </akyral-layout>
 
-@element ui-layout
+@element akyral-layout
 @blurb Web component which allows for easy app drawer creation
 @status alpha
-@homepage http://filaraujo.github.io/ui-layout
-@demo http://filaraujo.github.io/ui-layout/components/ui-layout/demo
+@homepage http://filaraujo.github.io/akyral-layout
+@demo http://filaraujo.github.io/akyral.io/layout.html
 -->
 
-<polymer-element name="ui-layout" constructor="UiLayout">
+<polymer-element name="akyral-layout" constructor="UiLayout">
     <template>
-        <link rel="stylesheet" href="ui-layout.css" />
+        <link rel="stylesheet" href="akyral-layout.css" />
 
         <div id="drawer" open?="{{isDrawerOpen}}">
             <content select="[drawer]" id="drawerContent"></content>
@@ -106,7 +106,7 @@ Example:
         (function(){
             var drawerTypes = ['parallax', 'pan', 'reveal', 'slide'];
 
-            Polymer('ui-layout', {
+            Polymer('akyral-layout', {
 
                /**
                 * The `author` attribute sets an initial author
