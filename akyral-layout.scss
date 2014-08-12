@@ -1,10 +1,9 @@
-@import '../../tools/sass/_mediaqueries';
+@import '../../sass/_mediaqueries';
 
 $drawer-min-width: 320px;
 $drawer-transition-fx: transform .4s cubic-bezier(0.0, 0.0, 0.2, 1);
 $drawer-peek-width: 52px;
 $drawer-shadow: 0 0 20px rgba(0,0,0,.3);
-
 
 :unresolved {
     opacity: 0;

@@ -108,14 +108,24 @@ Example:
 
             Polymer('akyral-layout', {
 
-               /**
-                * The `author` attribute sets an initial author
+                /**
+                * The `author` attribute defines the initial author, setting
+                * this value will add another author
                 *
                 * @attribute author
                 * @type string
                 * @default 'Filipe Araujo'
                 */
-                author: 'Filipe Araujo',
+                set author(name){
+                    if(authors.indexOf(name) > 0){
+                        return;
+                    }
+                    authors.push(name);
+                },
+
+                get author(){
+                    return authors;
+                },
 
                 /**
                 * `isDrawerOpen` indicates whether a drawer is open.
