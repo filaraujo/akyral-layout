@@ -1,7 +1,7 @@
 akyral-layout
 ==
 
-A responsive ui element that creates an app-like structure containing a drawer.
+A responsive ui element built on Polymer that creates an app-like structure containing a drawer.
 
 
 ### Upcoming features
@@ -10,7 +10,7 @@ A responsive ui element that creates an app-like structure containing a drawer.
 * stretch support for tv
 
 ##Documentation
-You can find documentation [here!](http://filaraujo.github.io/akyral-layout/components/akyral-layout/)
+You can find documentation [here!](http://filaraujo.github.io/akyral.io/layout.html#documentation)
 
 
 ##Demo

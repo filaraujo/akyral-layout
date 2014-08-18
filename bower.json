@@ -4,9 +4,9 @@
   "authors": [
     "Filipe Araujo <filipe.alves.araujo@gmail.com>"
   ],
-  "description": "A responsive ui element that creates an app-like structure containing a drawer.",
+  "description": "A responsive ui element built on Polymer that creates an app-like structure containing a drawer.",
   "keywords": [
-    "ui",
+    "akyral",
     "layout",
     "drawer",
     "polymer",
