@@ -108,6 +108,17 @@ Example:
 
             Polymer('akyral-layout', {
 
+                publish: {
+                    /**
+                    * `isDrawerOpen` indicates whether a drawer is open.
+                    *
+                    * @property isDrawerOpen
+                    * @type bool
+                    * @default false
+                    */
+                    isDrawerOpen: false,
+                },
+
                 /**
                 * The `author` attribute defines the initial author, setting
                 * this value will add another author
@@ -126,15 +137,6 @@ Example:
                 get author(){
                     return authors;
                 },
-
-                /**
-                * `isDrawerOpen` indicates whether a drawer is open.
-                *
-                * @property isDrawerOpen
-                * @type bool
-                * @default false
-                */
-                isDrawerOpen: false,
 
                 /**
                 * lifecycle event

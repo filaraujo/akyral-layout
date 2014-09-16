@@ -1,6 +1,6 @@
 {
   "name": "akyral-layout",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "authors": [
     "Filipe Araujo <filipe.alves.araujo@gmail.com>"
   ],
@@ -25,7 +25,6 @@
     "tests"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#~0.3.5",
-    "polymer-test-tools": "Polymer/polymer-test-tools#~0.3.5"
+    "polymer": "Polymer/polymer#~0.4.0"
   }
 }
