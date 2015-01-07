@@ -84,114 +84,113 @@ Example:
 @element akyral-layout
 @blurb Web component which allows for easy app drawer creation
 @status alpha
-@homepage http://filaraujo.github.io/akyral-layout
-@demo http://filaraujo.github.io/akyral.io/layout.html
+@homepage https://github.com/filaraujo/akyral-layout
 -->
 
 <polymer-element name="akyral-layout" constructor="UiLayout">
-    <template>
-        <link rel="stylesheet" href="akyral-layout.css" />
+  <template>
+    <link rel="stylesheet" href="akyral-layout.css" />
 
-        <div id="drawer" open?="{{isDrawerOpen}}">
-            <content select="[drawer]" id="drawerContent"></content>
-        </div>
+    <div id="drawer" open?="{{isDrawerOpen}}">
+      <content select="[drawer]" id="drawerContent"></content>
+    </div>
 
-        <div id="main">
-            <div id="overlay" on-tap="{{closeDrawer}}"></div>
-            <content select="[main]"></content>
-        </div>
+    <div id="main">
+      <div id="overlay" on-tap="{{closeDrawer}}"></div>
+      <content select="[main]"></content>
+    </div>
 
-    </template>
-    <script>
-        (function(){
-            var drawerTypes = ['parallax', 'pan', 'reveal', 'slide'],
+  </template>
+  <script>
+    (function() {
+      var drawerTypes = ['parallax', 'pan', 'reveal', 'slide'],
 
-                authors = ['Filipe Araujo'];
+        authors = ['Filipe Araujo'];
 
 
-            Polymer('akyral-layout', {
+      Polymer('akyral-layout', {
 
-                publish: {
-                    /**
-                    * `isDrawerOpen` indicates whether a drawer is open.
-                    *
-                    * @property isDrawerOpen
-                    * @type bool
-                    * @default false
-                    */
-                    isDrawerOpen: false,
-                },
+        publish: {
+          /**
+           * `isDrawerOpen` indicates whether a drawer is open.
+           *
+           * @property isDrawerOpen
+           * @type bool
+           * @default false
+           */
+          isDrawerOpen: false,
+        },
 
-                /**
-                * The `author` attribute defines the initial author, setting
-                * this value will add another author
-                *
-                * @attribute author
-                * @type string
-                * @default 'Filipe Araujo'
-                */
-                set author(name){
-                    if(authors.indexOf(name) > 0){
-                        return;
-                    }
-                    authors.push(name);
-                },
+        /**
+         * The `author` attribute defines the initial author, setting
+         * this value will add another author
+         *
+         * @attribute author
+         * @type string
+         * @default 'Filipe Araujo'
+         */
+        set author(name) {
+          if (authors.indexOf(name) > 0) {
+            return;
+          }
+          authors.push(name);
+        },
 
-                get author(){
-                    return authors;
-                },
+        get author() {
+          return authors;
+        },
 
-                /**
-                * lifecycle event
-                */
-                attached: function(){
-                    var node = this.$.drawerContent.getDistributedNodes()[0],
+        /**
+         * lifecycle event
+         */
+        attached: function() {
+          var node = this.$.drawerContent.getDistributedNodes()[0],
 
-                        // filter out which type of drawer is declared
-                        types;
+            // filter out which type of drawer is declared
+            types;
 
-                    types = drawerTypes.filter(function(type){
-                        return node && node.hasAttribute(type);
-                    });
+          types = drawerTypes.filter(function(type) {
+            return node && node.hasAttribute(type);
+          });
 
-                    if(!node){
-                        return false;
-                    }
+          if (!node) {
+            return false;
+          }
 
-                    // set which side drawer is on
-                    this.$.drawer.setAttribute(node.hasAttribute('right') ? 'right' : 'left', '');
+          // set which side drawer is on
+          this.$.drawer.setAttribute(node.hasAttribute('right') ? 'right' : 'left', '');
 
-                    // set which type of drawer to use
-                    this.$.drawer.setAttribute(types[0] || 'slide','');
-                },
+          // set which type of drawer to use
+          this.$.drawer.setAttribute(types[0] || 'slide', '');
+        },
 
-                /**
-                * The `closeDrawer` method will close the drawer
-                *
-                * @method closeDrawer
-                */
-                closeDrawer: function(){
-                    this.isDrawerOpen = false;
-                },
+        /**
+         * The `closeDrawer` method will close the drawer
+         *
+         * @method closeDrawer
+         */
+        closeDrawer: function() {
+          this.isDrawerOpen = false;
+        },
 
-                /**
-                * The `openDrawer` method will open the drawer
-                *
-                * @method openDrawer
-                */
-                openDrawer: function(){
-                    this.isDrawerOpen = false;
-                },
+        /**
+         * The `openDrawer` method will open the drawer
+         *
+         * @method openDrawer
+         */
+        openDrawer: function() {
+          this.isDrawerOpen = false;
+        },
 
-                /**
-                * The `toggleDrawer` method will open and close the drawer
-                *
-                * @method toggleDrawer
-                */
-                toggleDrawer: function(){
-                    this.isDrawerOpen = !this.isDrawerOpen;
-                }
-            });
-        }());
-    </script>
+        /**
+         * The `toggleDrawer` method will open and close the drawer
+         *
+         * @method toggleDrawer
+         */
+        toggleDrawer: function() {
+          this.isDrawerOpen = !this.isDrawerOpen;
+        }
+      });
+    }());
+  </script>
 </polymer-element>
