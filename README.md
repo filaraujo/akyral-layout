@@ -18,3 +18,7 @@ Check out the [demo!](http://filaraujo.github.io/akyral.io/layout/index.html)
 
 
 [![Analytics](https://ga-beacon.appspot.com/UA-46802115-1/akyral-layout/README)](https://github.com/igrigorik/ga-beacon)
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/filaraujo/akyral-layout/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
