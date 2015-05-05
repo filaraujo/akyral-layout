@@ -1,5 +1,6 @@
 <link rel="import" href="../polymer/polymer.html">
 
+
 <!--
 A responsive ui element that creates an app-like structure containing a drawer. The `akyral-layout`
 element wraps two other elements, a `main` and  a `drawer` construct. Each defining where
@@ -87,110 +88,25 @@ Example:
 @homepage https://github.com/filaraujo/akyral-layout
 -->
 
-<polymer-element name="akyral-layout" constructor="UiLayout">
+<dom-module id="akyral-layout">
+
+  <link rel="import" type="css" href="akyral-layout.css">
+
   <template>
-    <link rel="stylesheet" href="akyral-layout.css" />
+    <div class="container">
 
-    <div id="drawer" open?="{{isDrawerOpen}}">
-      <content select="[drawer]" id="drawerContent"></content>
+      <div class="drawer">
+        <content select="[drawer]"></content>
+      </div>
+
+      <div class="content">
+        <div class="overlay" on-click="closeDrawer"></div>
+        <content select="[main]"></content>
+      </div>
+
     </div>
-
-    <div id="main">
-      <div id="overlay" on-tap="{{closeDrawer}}"></div>
-      <content select="[main]"></content>
-    </div>
-
   </template>
-  <script>
-    (function() {
-      var drawerTypes = ['parallax', 'pan', 'reveal', 'slide'],
 
-        authors = ['Filipe Araujo'];
+</dom-module>
 
-
-      Polymer('akyral-layout', {
-
-        publish: {
-          /**
-           * `isDrawerOpen` indicates whether a drawer is open.
-           *
-           * @property isDrawerOpen
-           * @type bool
-           * @default false
-           */
-          isDrawerOpen: false,
-        },
-
-        /**
-         * The `author` attribute defines the initial author, setting
-         * this value will add another author
-         *
-         * @attribute author
-         * @type string
-         * @default 'Filipe Araujo'
-         */
-        set author(name) {
-          if (authors.indexOf(name) > 0) {
-            return;
-          }
-          authors.push(name);
-        },
-
-        get author() {
-          return authors;
-        },
-
-        /**
-         * lifecycle event
-         */
-        attached: function() {
-          var node = this.$.drawerContent.getDistributedNodes()[0],
-
-            // filter out which type of drawer is declared
-            types;
-
-          types = drawerTypes.filter(function(type) {
-            return node && node.hasAttribute(type);
-          });
-
-          if (!node) {
-            return false;
-          }
-
-          // set which side drawer is on
-          this.$.drawer.setAttribute(node.hasAttribute('right') ? 'right' : 'left', '');
-
-          // set which type of drawer to use
-          this.$.drawer.setAttribute(types[0] || 'slide', '');
-        },
-
-        /**
-         * The `closeDrawer` method will close the drawer
-         *
-         * @method closeDrawer
-         */
-        closeDrawer: function() {
-          this.isDrawerOpen = false;
-        },
-
-        /**
-         * The `openDrawer` method will open the drawer
-         *
-         * @method openDrawer
-         */
-        openDrawer: function() {
-          this.isDrawerOpen = false;
-        },
-
-        /**
-         * The `toggleDrawer` method will open and close the drawer
-         *
-         * @method toggleDrawer
-         */
-        toggleDrawer: function() {
-          this.isDrawerOpen = !this.isDrawerOpen;
-        }
-      });
-    }());
-  </script>
-</polymer-element>
+<script src="akyral-layout.js"></script>

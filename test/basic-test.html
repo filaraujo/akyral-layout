@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../web-component-tester/browser.js"></script>
+
+    <link rel="import" href="../akyral-layout.html">
+  </head>
+  <body>
+
+    <akyral-layout id="layout"></akyral-layout>
+    <akyral-layout id="layout-open" open></akyral-layout>
+
+    <script>
+      var el = document.querySelector('#layout');
+      var el2 = document.querySelector('#layout-open');
+
+      suite('<akyral-details>', function() {
+        test('should define the "author" property', function() {
+          assert.isObject(el.author);
+          assert.equal(el.author.name, 'Filipe Araujo');
+          assert.equal(el.author.github, 'github.com/filaraujo');
+        });
+
+        test('should define "author" as readOnly', function() {
+          el.author = 'New Author';
+          assert.equal(el.author.name, 'Filipe Araujo');
+          assert.equal(el.author.github, 'github.com/filaraujo');
+        });
+
+        test('should have a "closeDrawer" method', function() {
+          assert.isFunction(el.closeDrawer);
+        });
+
+        test('should have a "openDrawer" method', function() {
+          assert.isFunction(el.openDrawer);
+        });
+
+        test('should have a "toggleDrawer" method', function() {
+          assert.isFunction(el.toggleDrawer);
+        });
+
+        test('should have the drawer closed by default', function() {
+          assert.isFalse(el.open);
+        });
+
+        test('should open the drawer when "toggleDrawer" method is called',
+        function(done) {
+          el.toggleDrawer();
+
+          flush(function() {
+            assert.isTrue(el.open);
+            done();
+          });
+        });
+
+        test('should have the drawer open if the open attribute is added', function() {
+          assert.isTrue(el2.open);
+        });
+        //
+        // test('should remove the "open" attribute when closed',
+        // function(done) {
+        //   el.open = false;
+        //
+        //   flush(function(){
+        //     assert.isFalse(el.hasAttribute('open'));
+        //     done();
+        //   });
+        // });
+      });
+    </script>
+
+  </body>
+</html>
